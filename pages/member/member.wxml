@@ -1,0 +1,4 @@
+<!--member.wxml-->
+<view class="container">
+	会员中心
+</view>

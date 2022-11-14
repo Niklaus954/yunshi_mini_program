@@ -1,0 +1,14 @@
+<view class="home-page-header">
+  <view class="search" bind:tap="navToSearchPage">
+    <t-search t-class-input="t-search__input" t-class-input-container="t-search__input-container" placeholder="月球陨石 火热发售中" leftIcon="" disabled>
+      <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
+    </t-search>
+  </view>
+  <view class="swiper-wrap">
+    <t-swiper wx:if="{{imgSrcs.length > 0}}" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" navigation="{{navigation}}">
+      <t-swiper-item wx:for="{{imgSrcs}}" wx:key="index">
+        <image src="{{item.img}}" class="img" />
+      </t-swiper-item>
+    </t-swiper>
+  </view>
+</view>

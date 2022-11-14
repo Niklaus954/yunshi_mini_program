@@ -1,0 +1,31 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/member/member"
+	],
+	"tabBar": {
+		"custom": false,
+		"color": "#666666",
+		"selectedColor": "#FF5F15",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/member/member",
+				"text": "我的"
+			}
+		]
+	},
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "狗外包",
+		"navigationBarTextStyle": "black"
+	},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json"
+}
