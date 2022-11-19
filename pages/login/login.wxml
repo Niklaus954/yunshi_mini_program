@@ -1,0 +1,7 @@
+<!--login.wxml-->
+<view class="container">
+	<t-input class="account" bind:change="accountHandle" label="账号" type="text" />
+	<t-input class="password" bind:change="passwordHandle" label="密码" type="password" />
+	<t-button class="login-button" theme="primary" content="登  录" size="large" bindtap="submitHandle" disabled="{{disabled}}"></t-button>
+	<t-toast id="t-toast" />
+</view>

@@ -1,4 +1,11 @@
 <!--member.wxml-->
-<view class="container">
-	会员中心
+<view class="member">
+	<view class="member-pic" bindtap="jumpToLogin">
+		<view class="pic">
+			
+		</view>
+	</view>
+	<view class="click-login" wx:if="{{!isLogin}}" bindtap="jumpToLogin">
+		点击登录
+	</view>
 </view>

@@ -1,7 +1,8 @@
 {
 	"pages": [
 		"pages/index/index",
-		"pages/member/member"
+		"pages/member/member",
+		"pages/login/login"
 	],
 	"tabBar": {
 		"custom": false,
@@ -23,7 +24,7 @@
 	"window": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTitleText": "狗外包",
+		"navigationBarTitleText": "陨石收藏家",
 		"navigationBarTextStyle": "black"
 	},
 	"style": "v2",

@@ -1,0 +1,14 @@
+.account {
+  padding-bottom: 20rpx;
+  font-size: 34rpx;
+  color: #666;
+}
+
+.password {
+  font-size: 34rpx;
+  color: #666;
+}
+
+.login-button {
+  margin-top: 80rpx;
+}
