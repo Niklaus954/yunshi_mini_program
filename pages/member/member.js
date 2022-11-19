@@ -8,17 +8,30 @@ Page({
         // 是否登录
         isLogin: wx.getStorageSync('loginInfo') != null,
         loginInfo: wx.getStorageSync('loginInfo'),
+        showConfirm: false,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // wx.setStorageSync('loginInfo', null);
         this.setData({
             isLogin: wx.getStorageSync('loginInfo') != null,
             loginInfo: wx.getStorageSync('loginInfo'),
         });
+
+        // wx.getSetting({
+        //     success (res){
+        //         if (res.authSetting['scope.userInfo']) {
+        //             // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+        //             wx.getUserInfo({
+        //                 success: function(res) {
+        //                     console.log(res.userInfo)
+        //                 }
+        //             })
+        //         }
+        //     }
+        // })
     },
 
     /**
@@ -77,5 +90,24 @@ Page({
         wx.redirectTo({
           url: '../login/login',
         })
+    },
+
+    clickLogout() {
+        this.setData({
+            showConfirm: true,
+        });
+    },
+
+    logout() {
+        wx.setStorageSync('loginInfo', null);
+        wx.reLaunch({
+            url: '../index/index'
+        });
+    },
+
+    cancelLogout() {
+        this.setData({
+            showConfirm: false,
+        });
     }
 })

@@ -5,6 +5,7 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-toast": "tdesign-miniprogram/toast/toast"
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog"
   }
 }

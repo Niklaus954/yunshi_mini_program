@@ -1,5 +1,9 @@
 <!--member.wxml-->
 <view class="member">
+    <t-icon name="logout"
+      wx:if="{{isLogin}}"
+      bind:click="clickLogout"
+     custom-style="position:fixed;right: 36rpx;top: 32rpx;" size="40rpx" color="#bbb" />
 	<view class="member-pic" bindtap="jumpToLogin">
 		<view class="pic">
 			
@@ -8,4 +12,13 @@
 	<view class="click-login" wx:if="{{!isLogin}}" bindtap="jumpToLogin">
 		点击登录
 	</view>
+	<t-dialog
+        visible="{{showConfirm}}"
+        title="提醒"
+        content="确定退出？"
+        confirm-btn="确定"
+        cancel-btn="取消"
+        bind:confirm="logout"
+        bind:cancel="cancelLogout"
+      />
 </view>
