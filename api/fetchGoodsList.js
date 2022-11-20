@@ -21,7 +21,6 @@ export function fetchGoodsList(goodsQueryVO) {
             success: function(res) {
                 if (preHandle(res.data, reject)) {
                     const data = res.data.result;
-                    console.log(data);
                     if (data.data == null || data.data.length === 0) {
                         resolve([]);
                         return;

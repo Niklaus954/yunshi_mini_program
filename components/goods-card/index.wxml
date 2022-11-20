@@ -19,43 +19,11 @@
 				<view wx:if="{{ goods._title }}" class="goods-card__title">
 					{{ goods._title }}
 				</view>
-				<view wx:if="{{ goods.tags && !!goods.tags.length }}" class="goods-card__tags">
-					<view
-					  wx:for="{{ goods.tags }}"
-					  wx:key="index"
-					  wx:for-item="tag"
-					  class="goods-card__tag"
-					  data-index="{{index}}"
-					>
-						{{tag}}
-					</view>
-				</view>
 			</view>
 			<view class="goods-card__down">
-				<price
-				  wx:if="{{ goods._price }}"
-				  wr-class="spec-for-price"
-				  symbol-class="spec-for-symbol"
-				  symbol="{{currency}}"
-				  price="{{goods._price}}"
-				/>
-				<price
-				  wx:if="{{ goods._originPrice && isValidityLinePrice }}"
-				  wr-class="goods-card__origin-price"
-				  symbol="{{currency}}"
-				  price="{{goods._originPrice}}"
-				  type="delthrough"
-				/>
-				<t-icon
-				  class="goods-card__add-cart"
-				  prefix="wr"
-				  name="share"
-				  id="{{independentID}}-cart"
-				  data-id="{{independentID}}"
-				  catchtap="addCartHandle"
-				  size="48rpx"
-				  color="#FA550F"
-				/>
+				<view wx:if="{{ goods._description }}" class="goods-card__description">
+                    {{ goods._description }}
+                </view>
 			</view>
 		</view>
 	</view>
