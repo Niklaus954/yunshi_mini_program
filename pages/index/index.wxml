@@ -52,7 +52,6 @@
 	  wr-class="goods-list-container"
 	  goodsList="{{goodsList}}"
 	  bind:click="goodListClickHandle"
-	  bind:addcart="goodListAddCartHandle"
 	/>
 	<t-loading
         custom-style="text-align: center"

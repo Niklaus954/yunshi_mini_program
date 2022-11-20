@@ -57,11 +57,12 @@ export function fetchGoodsList(goodsQueryVO) {
 function convert(data) {
     return data.map(item => {
         const goodsResult = new GoodsResultVO();
-        goodsResult.id = 0;
+        goodsResult.id = item.id;
         goodsResult.title = item.name;
         goodsResult.mainPic = item.pics.length > 0 ? item.pics[0] : "";
-        goodsResult.subPics = [];
+        goodsResult.subPics = item.pics.length > 1 ? item.pics.slice(1, item.pics.length) : [];
         goodsResult.description = item.desc;
+        goodsResult.detail = item.detail;
         goodsResult.merchant.name = "";
         goodsResult.merchant.phone = "";
         return goodsResult;

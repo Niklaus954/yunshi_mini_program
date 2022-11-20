@@ -6,11 +6,19 @@ export class GoodsResultVO {
     _subPics;
     _title;
     _description;
-    _price;
-    _originPrice;
+    _detail;
     _rcTime;
     _rmTime;
     _merchant = new Merchant();
+
+
+    get detail() {
+        return this._detail;
+    }
+
+    set detail(value) {
+        this._detail = value;
+    }
 
     get price() {
         return this._price;

@@ -127,6 +127,12 @@ Page({
 		});
 	},
 
+	goodListClickHandle: function (e) {
+		wx.navigateTo({
+			url: '../detail/detail?info=' + encodeURIComponent(JSON.stringify(e.detail.goods)),
+		});
+	},
+
 	onShareAppMessage: function () {
 		return {
 			title: '陨石收藏家',

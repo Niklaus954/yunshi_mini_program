@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "详情",
+  "onReachBottomDistance": 10,
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  }
+}

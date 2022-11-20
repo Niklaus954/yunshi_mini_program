@@ -1,0 +1,11 @@
+/* pages/detail.wxss */
+
+.detail-contain {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 50rpx;
+}
+
+.item {
+  padding: 10rpx;
+}

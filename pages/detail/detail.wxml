@@ -1,0 +1,32 @@
+<view class="detail-contain">
+    <t-divider t-class="demo-5">
+      <text slot="content">宝贝介绍</text>
+    </t-divider>
+    <view>
+      <view>
+        {{goodsDetail._title}}
+      </view>
+      <view>
+        {{goodsDetail._description}}
+      </view>
+      <view>
+        {{goodsDetail._detail}}
+      </view>
+    </view>
+    <t-divider t-class="demo-5">
+      <text slot="content">图区</text>
+    </t-divider>
+    <t-image t-class="external-class"
+        src="{{goodsDetail._mainPic}}"
+        mode="scaleToFill"
+        shape="round">
+    </t-image>
+    <view wx:for="{{goodsDetail._subPics}}" wx:for-item="pic">
+        <t-image t-class="external-class item"
+            src="{{pic}}"
+            mode="scaleToFill"
+            wx:key="index"
+            shape="round">
+        </t-image>
+    </view>
+</view>
