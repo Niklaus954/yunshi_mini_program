@@ -12,6 +12,9 @@
 	<view class="click-login" wx:if="{{!isLogin}}" bindtap="jumpToLogin">
 		点击登录
 	</view>
+	<view class="click-login" wx:if="{{isLogin}}" >
+        {{loginInfo.user.nickname}}
+    </view>
 	<t-dialog
         visible="{{showConfirm}}"
         title="提醒"

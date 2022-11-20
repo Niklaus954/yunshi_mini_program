@@ -45,6 +45,12 @@ Page({
 				pageLoading: false,
 			});
 		});
+		// 当前页面允许分享
+		wx.showShareMenu({
+			withShareTicket: true,
+			//设置下方的Menus菜单，才能够让发送给朋友与分享到朋友圈两个按钮可以点击
+			menus: ["shareAppMessage", "shareTimeline"]
+		})
 	},
 
 	onPullDownRefresh() {
@@ -120,4 +126,32 @@ Page({
 			message: '没有更多了',
 		});
 	},
+
+	onShareAppMessage: function () {
+		return {
+			title: '陨石收藏家',
+			path: '/page/index/index?id=123',
+			success: function (res) {
+				console.log("分享成功");
+				// console.log(res.shareTickets[0])
+				// console.log
+				// wx.getShareInfo({
+				// 	shareTicket: res.shareTickets[0],
+				// 	success: function (res) {
+				// 		console.log(res)
+				// 	},
+				// 	fail: function (res) {
+				// 		console.log(res)
+				// 	},
+				// 	complete: function (res) {
+				// 		console.log(res)
+				// 	}
+				// })
+			},
+			fail: function (res) {
+				// 分享失败
+				console.log("分享失败");
+			},
+		};
+	}
 });

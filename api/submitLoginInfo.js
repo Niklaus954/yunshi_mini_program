@@ -1,13 +1,25 @@
+import {API_CONSTANT} from "./commonApiConstant";
+
 export function submitLogin(loginParams) {
-    // loginParams.account;
-    // loginParams.password;
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve({
-                account: "",
-                token: "",
-            });
-            // reject("密码错误");
-        }, 1000);
+        wx.request({
+            url: API_CONSTANT.url + "/meteorolite/pc/user/login.json",
+            data: {
+                phoneNum: loginParams.account,
+                password: loginParams.password,
+            },
+            method: "post",
+            dataType: 'json',
+            success: function(res) {
+                if (!res.data.success) {
+                    reject(res.data.errorMsg);
+                    return;
+                }
+                resolve(res.data.result);
+            },
+            fail: function(err) {
+                reject(err.message);
+            }
+        });
     })
 }
