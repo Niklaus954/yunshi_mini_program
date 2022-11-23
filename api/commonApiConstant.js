@@ -1,3 +1,3 @@
 export const API_CONSTANT = {
-    url: "http://192.168.0.101:8080",
+    url: "http://42.194.181.172:8080",
 };

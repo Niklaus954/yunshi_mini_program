@@ -9,3 +9,26 @@
 .item {
   padding: 10rpx;
 }
+
+.title {
+    font-size: 36rpx;
+    text-align: left;
+    margin-left: 32rpx;
+    color: #333;
+}
+
+.detail {
+    font-size: 28rpx;
+    text-align: left;
+    margin-left: 32rpx;
+    color: #999;
+    margin-top: 14rpx;
+}
+
+.description {
+    font-size: 32rpx;
+    text-align: left;
+    margin-left: 32rpx;
+    color: #666;
+    margin-top: 14rpx;
+}

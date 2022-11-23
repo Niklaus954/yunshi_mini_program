@@ -3,13 +3,13 @@
       <text slot="content">宝贝介绍</text>
     </t-divider>
     <view>
-      <view>
+      <view class="title">
         {{goodsDetail._title}}
       </view>
-      <view>
+      <view class="description">
         {{goodsDetail._description}}
       </view>
-      <view>
+      <view class="detail">
         {{goodsDetail._detail}}
       </view>
     </view>
