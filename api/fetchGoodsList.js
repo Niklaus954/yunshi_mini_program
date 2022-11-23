@@ -2,7 +2,7 @@ import {GoodsResultVO} from "../domain/GoodsResultVO";
 import {API_CONSTANT} from "./commonApiConstant";
 import {preHandle} from "./resultHandler";
 
-export function fetchGoodsList(goodsQueryVO) {
+export function fetchGoodsList(goodsQueryVO, options) {
     return new Promise((resolve, reject) => {
         wx.request({
             url: API_CONSTANT.url + "/meteorolite/wx/item/pageQuery.json",
@@ -19,7 +19,7 @@ export function fetchGoodsList(goodsQueryVO) {
             method: "post",
             dataType: 'json',
             success: function(res) {
-                if (preHandle(res.data, reject)) {
+                if (preHandle(res.data, reject, options)) {
                     const data = res.data.result;
                     if (data.data == null || data.data.length === 0) {
                         resolve([]);

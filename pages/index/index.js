@@ -7,6 +7,9 @@ Page({
 		// 是否登录
 		isLogin: false,
 
+		// 页面路由参数
+		options: null,
+
 		// 页面刷新或初始化
 		pageLoading: false,
 
@@ -39,7 +42,10 @@ Page({
 		},
 	},
 
-	onLoad() {
+	onLoad(options) {
+		this.setData({
+			options,
+		});
 		this.init().then(() => {
 			this.setData({
 				pageLoading: false,
@@ -50,10 +56,13 @@ Page({
 			withShareTicket: true,
 			//设置下方的Menus菜单，才能够让发送给朋友与分享到朋友圈两个按钮可以点击
 			menus: ["shareAppMessage", "shareTimeline"]
-		})
+		});
 	},
 
 	onPullDownRefresh() {
+		this.setData({
+			options: null,
+		});
 		this.init().then(() => {
 			this.setData({
 				pageLoading: false,
@@ -67,9 +76,13 @@ Page({
 
 	async init() {
 		wx.stopPullDownRefresh();
+		const query = new GoodsQueryVO();
+		if (this.data.options && this.data.options.goodsIds) {
+			query.goodsIds = this.data.options.goodsIds.split(",");
+		}
 		this.setData({
 			pageLoading: true,
-			goodsQueryVO: new GoodsQueryVO(),
+			goodsQueryVO: query,
 			goodsList: [],
 			hasMore: true,
 			isLogin: wx.getStorageSync('loginInfo') != null,
@@ -91,7 +104,7 @@ Page({
 		this.setData({
 			goodsLoading: true,
 		});
-		const result = await getGoodsList(this.data.goodsQueryVO);
+		const result = await getGoodsList(this.data.goodsQueryVO, this.data.options);
 		if (result.length === 0) {
 			this.toastNoMore();
 		}
@@ -100,6 +113,14 @@ Page({
 			goodsLoading: false,
 			hasMore: result.length > 0,
 		});
+		if (this.data.options && this.data.options.goodsIds) {
+			if (this.data.goodsList && this.data.goodsList.length > 1) {
+				return;
+			}
+			wx.redirectTo({
+				url: '../detail/detail?info=' + encodeURIComponent(JSON.stringify(this.data.goodsList[0])) + "&shareInfo=" + this.data.options.shareInfo,
+			});
+		}
 	},
 
 	// 搜索关键字
@@ -128,36 +149,12 @@ Page({
 	},
 
 	goodListClickHandle: function (e) {
+		let str = '?info=' + encodeURIComponent(JSON.stringify(e.detail.goods));
+		if (this.data.options && this.data.options.shareInfo) {
+			str += `&shareInfo=${this.data.options.shareInfo}`;
+		}
 		wx.navigateTo({
-			url: '../detail/detail?info=' + encodeURIComponent(JSON.stringify(e.detail.goods)),
+			url: '../detail/detail' + str,
 		});
 	},
-
-	onShareAppMessage: function () {
-		return {
-			title: '陨石收藏家',
-			path: '/page/index/index?id=123',
-			success: function (res) {
-				console.log("分享成功");
-				// console.log(res.shareTickets[0])
-				// console.log
-				// wx.getShareInfo({
-				// 	shareTicket: res.shareTickets[0],
-				// 	success: function (res) {
-				// 		console.log(res)
-				// 	},
-				// 	fail: function (res) {
-				// 		console.log(res)
-				// 	},
-				// 	complete: function (res) {
-				// 		console.log(res)
-				// 	}
-				// })
-			},
-			fail: function (res) {
-				// 分享失败
-				console.log("分享失败");
-			},
-		};
-	}
 });

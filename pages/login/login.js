@@ -11,13 +11,16 @@ Page({
         account: "",
 		password: "",
 		disabled: false,
+        options: null,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.setData({
+            options,
+        });
     },
 
     /**
@@ -93,10 +96,11 @@ Page({
 		this.setData({
 			disabled: true,
 		});
+        const params = this.generateUrlParams()
         submitLogin(this.data).then(result => {
             wx.setStorageSync("loginInfo", result);
             wx.reLaunch({
-                url: '../index/index'
+                url: '../index/index' + params,
             });
         }).catch(message => {
 			Toast({  message });
@@ -104,5 +108,13 @@ Page({
 				disabled: false,
 			});
         });
-	}
+	},
+
+    generateUrlParams() {
+        let str = '';
+        if (this.data.options && this.data.options.goodsIds && this.data.options.goodsIds.length > 0) {
+            str = `?goodsIds=${this.data.options.goodsIds}&shareInfo=${this.data.options.shareInfo}`;
+        }
+        return str;
+    },
 })

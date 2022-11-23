@@ -1,4 +1,16 @@
 <view class="detail-contain">
+    <view wx:if="{{shareInfo != null}}">
+        <t-divider t-class="demo-5">
+          <text slot="content">分享人</text>
+        </t-divider>
+        <view class="description">
+            {{shareInfo.name}}
+        </view>
+        <view class="description">
+            {{shareInfo.phone}}
+        </view>
+    </view>
+
     <t-divider t-class="demo-5">
       <text slot="content">宝贝介绍</text>
     </t-divider>

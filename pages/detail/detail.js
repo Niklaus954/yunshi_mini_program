@@ -8,6 +8,7 @@ Page({
      */
     data: {
         goodsDetail: new GoodsResultVO(),
+        shareInfo: null,
     },
 
     /**
@@ -16,6 +17,12 @@ Page({
     onLoad(options) {
         this.setData({
             goodsDetail: JSON.parse(decodeURIComponent(options.info)),
+            shareInfo: options.shareInfo ? JSON.parse(decodeURIComponent(options.shareInfo)) : null,
+        });
+        wx.showShareMenu({
+            withShareTicket: true,
+            //设置下方的Menus菜单，才能够让发送给朋友与分享到朋友圈两个按钮可以点击
+            menus: ["shareAppMessage", "shareTimeline"]
         });
     },
 
@@ -64,7 +71,23 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage() {
+    onShareAppMessage: function () {
+        let shareInfo = {
+            name: "AA",
+            phone: "13588314884"
+        };
+        if (this.data.shareInfo) {
+            shareInfo = this.data.shareInfo;
+        }
+        return {
+            title: this.data.goodsDetail._title,
+            path: '/pages/index/index?goodsIds=' + this.data.goodsDetail._id + "&shareInfo=" + encodeURIComponent(JSON.stringify(shareInfo)),
+            success: function (res) {
 
+            },
+            fail: function (res) {
+
+            },
+        };
     }
 })
