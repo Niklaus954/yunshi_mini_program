@@ -18,6 +18,9 @@
       <view class="title">
         {{goodsDetail._title}}
       </view>
+      <view class="price">
+        ¥ {{goodsDetail._price}}
+       </view>
       <view class="description">
         {{goodsDetail._description}}
       </view>

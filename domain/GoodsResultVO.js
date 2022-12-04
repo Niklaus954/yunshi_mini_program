@@ -6,6 +6,7 @@ export class GoodsResultVO {
     _subPics;
     _title;
     _description;
+    _price;
     _detail;
     _rcTime;
     _rmTime;

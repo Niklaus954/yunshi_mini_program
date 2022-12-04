@@ -136,12 +136,12 @@
 }
 
 .spec-for-price {
-  font-size: 36rpx;
+  font-size: 32rpx;
   white-space: nowrap;
   font-weight: 700;
-  order: 1;
   color: #fa4126;
   margin: 0;
+  margin-top: 10rpx;
 }
 
 .spec-for-symbol {

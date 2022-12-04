@@ -17,7 +17,6 @@
   width: 200rpx;
   height: 200rpx;
   border-radius: 50%;
-  background-image: url("https://img2.baidu.com/it/u=3993966638,1630232273&fm=253&fmt=auto&app=138&f=JPG?w=384&h=384");
   background-size: contain;
 }
 

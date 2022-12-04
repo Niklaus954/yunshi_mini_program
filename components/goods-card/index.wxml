@@ -20,11 +20,14 @@
 					{{ goods._title }}
 				</view>
 			</view>
+			<view class="spec-for-price">
+                ¥ {{goods._price}}
+            </view>
 			<view class="goods-card__down">
-				<view wx:if="{{ goods._description }}" class="goods-card__description">
+                <view wx:if="{{ goods._description }}" class="goods-card__description">
                     {{ goods._description }}
                 </view>
-			</view>
+            </view>
 		</view>
 	</view>
 </view>

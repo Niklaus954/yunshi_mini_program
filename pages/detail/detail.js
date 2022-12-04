@@ -73,8 +73,8 @@ Page({
      */
     onShareAppMessage: function () {
         let shareInfo = {
-            name: "AA",
-            phone: "13588314884"
+            name: wx.getStorageSync('loginInfo').user.nickname,
+            phone: wx.getStorageSync('loginInfo').user.phoneNum,
         };
         if (this.data.shareInfo) {
             shareInfo = this.data.shareInfo;

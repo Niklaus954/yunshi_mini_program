@@ -9,6 +9,7 @@ Page({
         isLogin: wx.getStorageSync('loginInfo') != null,
         loginInfo: wx.getStorageSync('loginInfo'),
         showConfirm: false,
+        defaultAvatarUrl: "https://img2.baidu.com/it/u=3993966638,1630232273&fm=253&fmt=auto&app=138&f=JPG?w=384&h=384",
     },
 
     /**
@@ -19,19 +20,11 @@ Page({
             isLogin: wx.getStorageSync('loginInfo') != null,
             loginInfo: wx.getStorageSync('loginInfo'),
         });
-
-        // wx.getSetting({
-        //     success (res){
-        //         if (res.authSetting['scope.userInfo']) {
-        //             // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-        //             wx.getUserInfo({
-        //                 success: function(res) {
-        //                     console.log(res.userInfo)
-        //                 }
-        //             })
-        //         }
-        //     }
-        // })
+        if (this.data.isLogin && this.data.loginInfo.user.avatarUrl) {
+            this.setData({
+                defaultAvatarUrl: this.data.loginInfo.user.avatarUrl,
+            });
+        }
     },
 
     /**
