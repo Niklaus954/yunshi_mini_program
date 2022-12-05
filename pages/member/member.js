@@ -9,7 +9,7 @@ Page({
         isLogin: wx.getStorageSync('loginInfo') != null,
         loginInfo: wx.getStorageSync('loginInfo'),
         showConfirm: false,
-        defaultAvatarUrl: "https://img2.baidu.com/it/u=3993966638,1630232273&fm=253&fmt=auto&app=138&f=JPG?w=384&h=384",
+        defaultAvatarUrl: "https://ysscj-1315026611.cos.ap-nanjing.myqcloud.com/mini-program/default_pic.jpg",
     },
 
     /**
