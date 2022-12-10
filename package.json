@@ -9,6 +9,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"base-64": "^1.0.0",
 		"tdesign-miniprogram": "^0.25.0",
 		"tslib": "^1.11.1"
 	}

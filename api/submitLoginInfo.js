@@ -1,4 +1,5 @@
 import {API_CONSTANT} from "./commonApiConstant";
+import * as base64 from "base-64"
 
 export function submitLogin(loginParams) {
     return new Promise((resolve, reject) => {
@@ -6,7 +7,7 @@ export function submitLogin(loginParams) {
             url: API_CONSTANT.url + "/meteorolite/pc/user/login.json",
             data: {
                 phoneNum: loginParams.account,
-                password: loginParams.password,
+                password: base64.encode(loginParams.password),
             },
             method: "post",
             dataType: 'json',
