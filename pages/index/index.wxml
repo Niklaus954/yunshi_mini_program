@@ -9,7 +9,27 @@
 	</t-loading>
 </view>
 <t-toast id="t-toast" />
-<view class="home-page-header">
+<view wx:if="{{fromShare}}">
+    <image wx:if="{{shareInfo.introUrl}}"
+        class="introImage"
+        src="{{shareInfo.introUrl}}"
+        mode="scaleToFill"
+        shape="round">
+    </image>
+    <t-divider t-class="demo-5">
+      <text slot="content">分享人</text>
+    </t-divider>
+    <view class="description">
+        {{shareInfo.name}}
+    </view>
+    <view class="description">
+        {{shareInfo.phone}}
+    </view>
+    <view class="description">
+        {{shareInfo.intro}}
+    </view>
+</view>
+<view class="home-page-header" wx:if="{{!fromShare}}">
   <view class="search" bind:tap="navToSearchPage" wx:if="{{isLogin}}">
     <t-search t-class-input="t-search__input"
     bind:blur="searchHandle"
@@ -39,6 +59,7 @@
 	  t-class-track="tabs-external__track"
 	  defaultValue="{{1}}"
 	  bind:change="tabChangeHandle"
+	  wx:if="{{!fromShare}}"
 	>
 		<t-tab-panel
 		  wx:for="{{tabList}}"

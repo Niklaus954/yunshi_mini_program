@@ -40,3 +40,7 @@
     color: #666;
     margin-top: 14rpx;
 }
+
+.introImage {
+    width: 100%;
+}

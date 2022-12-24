@@ -1,5 +1,11 @@
 <view class="detail-contain">
     <view wx:if="{{shareInfo != null}}">
+        <image wx:if="{{shareInfo.introUrl}}"
+            class="introImage"
+            src="{{shareInfo.introUrl}}"
+            mode="scaleToFill"
+            shape="round">
+        </image>
         <t-divider t-class="demo-5">
           <text slot="content">分享人</text>
         </t-divider>
@@ -8,6 +14,9 @@
         </view>
         <view class="description">
             {{shareInfo.phone}}
+        </view>
+        <view class="description">
+            {{shareInfo.intro}}
         </view>
     </view>
 

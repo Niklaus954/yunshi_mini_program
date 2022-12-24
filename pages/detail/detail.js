@@ -75,6 +75,8 @@ Page({
         let shareInfo = {
             name: wx.getStorageSync('loginInfo').user.nickname,
             phone: wx.getStorageSync('loginInfo').user.phoneNum,
+            introUrl: wx.getStorageSync('loginInfo').user.introUrl,
+            intro: wx.getStorageSync('loginInfo').user.intro,
         };
         if (this.data.shareInfo) {
             shareInfo = this.data.shareInfo;

@@ -102,3 +102,15 @@ page {
 .loading-text {
   color: #b9b9b9 !important;
 }
+
+.description {
+    font-size: 32rpx;
+    text-align: left;
+    margin-left: 32rpx;
+    color: #666;
+    margin-top: 14rpx;
+}
+
+.introImage {
+    width: 100%;
+}

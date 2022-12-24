@@ -10,6 +10,12 @@ Page({
 		// 页面路由参数
 		options: null,
 
+		// 来自分享
+		fromShare: false,
+
+		// 分享信息
+		shareInfo: null,
+
 		// 页面刷新或初始化
 		pageLoading: false,
 
@@ -45,6 +51,8 @@ Page({
 	onLoad(options) {
 		this.setData({
 			options,
+			fromShare: options && options.goodsIds,
+			shareInfo: options && options.shareInfo ? JSON.parse(decodeURIComponent(options.shareInfo)) : {},
 		});
 		this.init().then(() => {
 			this.setData({
@@ -60,6 +68,9 @@ Page({
 	},
 
 	onPullDownRefresh() {
+		if (this.data.fromShare) {
+			return;
+		}
 		this.setData({
 			options: null,
 		});
@@ -71,6 +82,9 @@ Page({
 	},
 
 	async onReachBottom() {
+		if (this.data.goodsQueryVO.goodsIds && this.data.goodsQueryVO.goodsIds.length > 0) {
+			return;
+		}
 		await this.queryGoodsList();
 	},
 
@@ -117,6 +131,9 @@ Page({
 			if (this.data.goodsList && this.data.goodsList.length > 1) {
 				return;
 			}
+			if (this.data.goodsList.length < 1) {
+				return;
+			}
 			wx.redirectTo({
 				url: '../detail/detail?info=' + encodeURIComponent(JSON.stringify(this.data.goodsList[0])) + "&shareInfo=" + this.data.options.shareInfo,
 			});
@@ -157,4 +174,24 @@ Page({
 			url: '../detail/detail' + str,
 		});
 	},
+
+	/**
+	 * 用户点击右上角分享
+	 */
+	onShareAppMessage: function () {
+		let shareInfo = {
+			name: wx.getStorageSync('loginInfo').user.nickname,
+			phone: wx.getStorageSync('loginInfo').user.phoneNum,
+			introUrl: wx.getStorageSync('loginInfo').user.introUrl,
+			intro: wx.getStorageSync('loginInfo').user.intro,
+		};
+		if (this.data.options && this.data.options.shareInfo) {
+			shareInfo = JSON.parse(decodeURIComponent(this.data.options.shareInfo))
+		}
+		const goodsIds = this.data.goodsList.map(item => item._id).join();
+		return {
+			title: "来自" + shareInfo.name + "的分享",
+			path: '/pages/index/index?goodsIds=' + goodsIds + "&shareInfo=" + encodeURIComponent(JSON.stringify(shareInfo)),
+		};
+	}
 });
