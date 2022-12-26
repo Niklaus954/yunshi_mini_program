@@ -179,12 +179,13 @@ Page({
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage: function () {
-		let shareInfo = {
-			name: wx.getStorageSync('loginInfo').user.nickname,
-			phone: wx.getStorageSync('loginInfo').user.phoneNum,
-			introUrl: wx.getStorageSync('loginInfo').user.introUrl,
-			intro: wx.getStorageSync('loginInfo').user.intro,
-		};
+		const loginInfo = wx.getStorageSync('loginInfo');
+    let shareInfo = {
+        name: loginInfo.user.nickname,
+        phone: loginInfo.user.telephoneNum ? loginInfo.user.telephoneNum : loginInfo.user.phoneNum,
+        introUrl: loginInfo.user.introUrl,
+        intro: loginInfo.user.intro,
+    };
 		if (this.data.options && this.data.options.shareInfo) {
 			shareInfo = JSON.parse(decodeURIComponent(this.data.options.shareInfo))
 		}
