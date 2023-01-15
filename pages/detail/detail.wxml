@@ -19,6 +19,23 @@
             {{shareInfo.intro}}
         </view>
     </view>
+    <view wx:if="{{shareInfo == null || shareInfo == undefined || JSON.stringify(shareInfo) == '{}'}}">
+        <t-divider t-class="demo-5">
+          <text slot="content">商家信息</text>
+        </t-divider>
+        <view class="description">
+            {{userInfo.nickname}}
+        </view>
+        <view class="description">
+            {{userInfo.telephoneNum}}
+        </view>
+        <view class="description">
+            {{userInfo.address}}
+        </view>
+        <view class="description">
+            {{userInfo.intro}}
+        </view>
+    </view>
 
     <t-divider t-class="demo-5">
       <text slot="content">宝贝介绍</text>

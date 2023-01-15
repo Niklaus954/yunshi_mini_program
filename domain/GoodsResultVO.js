@@ -11,7 +11,25 @@ export class GoodsResultVO {
     _rcTime;
     _rmTime;
     _merchant = new Merchant();
+    _status;
+    _userId;
 
+
+    get userId() {
+        return this._userId;
+    }
+
+    set userId(value) {
+        this._userId = value;
+    }
+
+    get status() {
+        return this._status;
+    }
+
+    set status(value) {
+        this._status = value;
+    }
 
     get detail() {
         return this._detail;

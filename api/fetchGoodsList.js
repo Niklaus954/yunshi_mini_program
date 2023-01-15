@@ -45,6 +45,8 @@ function convert(data) {
         goodsResult.subPics = item.pics.length > 1 ? item.pics.slice(1, item.pics.length) : [];
         goodsResult.description = item.desc;
         goodsResult.detail = item.detail;
+        goodsResult.status = item.status;
+        goodsResult.userId = item.userId;
         goodsResult.merchant.name = "";
         goodsResult.merchant.phone = "";
         return goodsResult;
