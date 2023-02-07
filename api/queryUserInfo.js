@@ -1,5 +1,6 @@
 import {API_CONSTANT} from "./commonApiConstant";
 import {preHandle} from "./resultHandler";
+import {getNullable} from "../util/commonUtil";
 
 export function queryUserInfoById(userId) {
     return new Promise((resolve, reject) => {
@@ -9,7 +10,7 @@ export function queryUserInfoById(userId) {
                 id: userId
             },
             header: {
-                token: wx.getStorageSync('loginInfo').token,
+                token: getNullable('token', wx.getStorageSync('loginInfo')),
             },
             method: "post",
             dataType: 'json',

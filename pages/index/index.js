@@ -106,7 +106,7 @@ Page({
 
 	async queryGoodsList() {
 		// 未登录不能查看商品
-		if (!this.data.isLogin) {
+		if (!this.data.isLogin && this.data.options && !this.data.options.goodsIds) {
 			return;
 		}
 		// 没有更多了
@@ -185,6 +185,7 @@ Page({
         phone: loginInfo.user.telephoneNum ? loginInfo.user.telephoneNum : loginInfo.user.phoneNum,
         introUrl: loginInfo.user.introUrl,
         intro: loginInfo.user.intro,
+		address: loginInfo.user.address,
     };
 		if (this.data.options && this.data.options.shareInfo) {
 			shareInfo = JSON.parse(decodeURIComponent(this.data.options.shareInfo))

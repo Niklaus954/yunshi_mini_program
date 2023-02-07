@@ -18,19 +18,22 @@ Page({
      */
     async onLoad(options) {
         const goodsDetail = JSON.parse(decodeURIComponent(options.info));
+        const shareInfo = options.shareInfo ? JSON.parse(decodeURIComponent(options.shareInfo)) : null;
         this.setData({
             goodsDetail,
-            shareInfo: options.shareInfo ? JSON.parse(decodeURIComponent(options.shareInfo)) : null,
+            shareInfo,
         });
         wx.showShareMenu({
             withShareTicket: true,
             //设置下方的Menus菜单，才能够让发送给朋友与分享到朋友圈两个按钮可以点击
             menus: ["shareAppMessage", "shareTimeline"]
         });
-        const userInfo = await queryUserInfoById(goodsDetail._userId);
-        this.setData({
-            userInfo,
-        });
+        if (!shareInfo) {
+            const userInfo = await queryUserInfoById(goodsDetail._userId);
+            this.setData({
+                userInfo,
+            });
+        }
     },
 
     /**
@@ -85,6 +88,7 @@ Page({
             phone: loginInfo.user.telephoneNum ? loginInfo.user.telephoneNum : loginInfo.user.phoneNum,
             introUrl: loginInfo.user.introUrl,
             intro: loginInfo.user.intro,
+            address: loginInfo.user.address,
         };
         if (this.data.shareInfo) {
             shareInfo = this.data.shareInfo;
@@ -92,6 +96,7 @@ Page({
         return {
             title: this.data.goodsDetail._title,
             path: '/pages/index/index?goodsIds=' + this.data.goodsDetail._id + "&shareInfo=" + encodeURIComponent(JSON.stringify(shareInfo)),
+            imageUrl: this.data.goodsDetail._mainPic,
             success: function (res) {
 
             },
@@ -99,5 +104,15 @@ Page({
 
             },
         };
-    }
+    },
+
+    /**
+     * 图片预览
+     */
+    prevImage: function (e) {
+        wx.previewImage({
+            current: e.currentTarget.dataset.img,
+            urls: [this.data.goodsDetail._mainPic, ...this.data.goodsDetail._subPics],
+        })
+    },
 })

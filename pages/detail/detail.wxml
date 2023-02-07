@@ -16,6 +16,9 @@
             {{shareInfo.phone}}
         </view>
         <view class="description">
+            {{shareInfo.address}}
+        </view>
+        <view class="description">
             {{shareInfo.intro}}
         </view>
     </view>
@@ -60,6 +63,8 @@
     <t-image t-class="external-class"
         src="{{goodsDetail._mainPic}}"
         mode="scaleToFill"
+        bindtap="prevImage"
+        data-img="{{goodsDetail._mainPic}}"
         shape="round">
     </t-image>
     <view wx:for="{{goodsDetail._subPics}}" wx:for-item="pic">
@@ -67,6 +72,8 @@
             src="{{pic}}"
             mode="scaleToFill"
             wx:key="index"
+            bindtap="prevImage"
+            data-img="{{pic}}"
             shape="round">
         </t-image>
     </view>
